@@ -23,4 +23,20 @@ module("TodoList Class", function (hooks) {
     assert.deepEqual(todoList.todos, [], "lista está vazia");
     assert.notOk(todoList.hasTodos, "lista está vazia");
   });
+
+  test("deve adicionar novos Todos à lista", (assert) => {
+    const todoItem = new Todo("foo");
+    const expectedList = [todoItem, todoItem];
+
+    todoList.addTodo(todoItem);
+    todoList.addTodo(todoItem);
+
+    assert.ok(todoList.hasTodos, "a lista possui Todos");
+
+    assert.deepEqual(
+      todoList.todos,
+      expectedList,
+      "a lista de todos está correta"
+    );
+  });
 });
