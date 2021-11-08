@@ -23,7 +23,7 @@ class TodoList {
   }
 
   get hasTodos() {
-    return this.numberOfTodos >= 0;
+    return this.numberOfTodos > 0;
   }
 
   addTodo(todo) {
