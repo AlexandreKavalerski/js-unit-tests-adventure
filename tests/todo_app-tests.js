@@ -1,19 +1,26 @@
 import { TodoList, Todo } from "../todo_app/todo.js";
 const { module, test } = QUnit;
 
-
 module("Todo Class", function () {
-    test("constructor | it should create a todo with a name", (assert) => {
-        const expectedName = 'name of the todo'
-        const newTodo = new Todo(expectedName);
-        assert.equal(newTodo.name, expectedName, 'name of the created todo is correct')
-    });
+  test("constructor | deve criar um Todo com um nome", (assert) => {
+    const expectedName = "nome do Todo";
+    const newTodo = new Todo(expectedName);
+    assert.equal(newTodo.name, expectedName, "nome do Todo está correto");
+  });
 });
 
+module("TodoList Class", function (hooks) {
+  let todoList;
+  hooks.beforeEach(function () {
+    todoList = new TodoList();
+  });
 
-module("TodoList Class", function () {
-    test("should start with an empty todo list", (assert) => {
-        const todoList = new TodoList();
-        assert.deepEqual(todoList.todos, [], 'todos is empty');
-    });
+  hooks.afterEach(function () {
+    todoList.clearList();
+  });
+
+  test("deve iniciar com TodoList vazio", (assert) => {
+    assert.deepEqual(todoList.todos, [], "lista está vazia");
+    assert.notOk(todoList.hasTodos, "lista está vazia");
+  });
 });
