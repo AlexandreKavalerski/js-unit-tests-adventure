@@ -10,7 +10,7 @@ module("add", function () {
     assert.equal(add(-5, 8), 3, "somou corretamente");
   });
 
-  test("deve retornar erro ao tentar uma string", function (assert) {
+  test("deve gerar erro ao tentar somar string", function (assert) {
     const a = "1";
     const b = "abc";
     assert.throws(
